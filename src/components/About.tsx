@@ -127,15 +127,34 @@ export default function About() {
 
               <div className="relative z-10">
                 <CardHeader className="pb-6">
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-6">
+                    {/* Profile Photo */}
                     <motion.div
-                      className="p-3 rounded-lg bg-gradient-to-r from-blue-600 to-slate-700 shadow-lg"
-                      whileHover={{ rotate: [0, -5, 5, 0] }}
-                      transition={{ duration: 0.5 }}
+                      className="relative"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
                     >
-                      <User className="w-6 h-6 text-white" />
+                      <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-3 border-blue-500/30 shadow-xl">
+                        <img
+                          src='/IMG_2288.jpg'
+                          alt="Shourya Bhosale"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      {/* Decorative ring */}
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 to-slate-500/20 animate-pulse"></div>
                     </motion.div>
-                    <div>
+
+                    <div className="flex-1">
+                      <div className="flex items-center gap-4 mb-2">
+                        <motion.div
+                          className="p-3 rounded-lg bg-gradient-to-r from-blue-600 to-slate-700 shadow-lg"
+                          whileHover={{ rotate: [0, -5, 5, 0] }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <User className="w-6 h-6 text-white" />
+                        </motion.div>
+                      </div>
                       <CardTitle className="text-2xl font-bold text-white">
                         Hello, I'm Shourya Bhosale
                       </CardTitle>
@@ -158,9 +177,9 @@ export default function About() {
                     I'm a Computer Engineering graduate from VIT Pune, currently
                     pursuing ePGD in CSE from IIT Bombay with hands on
                     experience in full-stack development, cloud-native tools and
-                    cloud technologies. I love building scalable applications and
-                    immersive user experiences that solve real-world problems
-                    and delight users.
+                    cloud technologies. I love building scalable applications
+                    and immersive user experiences that solve real-world
+                    problems and delight users.
                   </motion.div>
 
                   {/* Highlights Grid */}

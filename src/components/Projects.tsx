@@ -33,7 +33,7 @@ const projects = [
     title: "Mealify",
     tech: "Express.js, React, MongoDB, Gemini AI",
     description: "Personalized meal planning using AI-generated recipes and secure authentication",
-    link: "#",
+    link: "https://github.com/shouryabhosale2201/mealify",
     icon: ChefHat,
     gradient: "from-slate-600 via-blue-700 to-slate-800",
     bgGradient: "from-slate-900/20 via-blue-900/30 to-slate-900/20",
