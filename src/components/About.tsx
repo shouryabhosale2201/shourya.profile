@@ -136,7 +136,7 @@ export default function About() {
                     >
                       <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-3 border-blue-500/30 shadow-xl">
                         <img
-                          src='/IMG_2288.jpg'
+                          src={`${import.meta.env.BASE_URL}/IMG_1132.jpg`}
                           alt="Shourya Bhosale"
                           className="w-full h-full object-cover"
                         />
@@ -146,15 +146,6 @@ export default function About() {
                     </motion.div>
 
                     <div className="flex-1">
-                      <div className="flex items-center gap-4 mb-2">
-                        <motion.div
-                          className="p-3 rounded-lg bg-gradient-to-r from-blue-600 to-slate-700 shadow-lg"
-                          whileHover={{ rotate: [0, -5, 5, 0] }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <User className="w-6 h-6 text-white" />
-                        </motion.div>
-                      </div>
                       <CardTitle className="text-2xl font-bold text-white">
                         Hello, I'm Shourya Bhosale
                       </CardTitle>

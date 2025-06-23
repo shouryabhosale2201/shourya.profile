@@ -7,7 +7,9 @@ import {
   MessageCircle,
   Send,
   Copy,
-  ExternalLink
+  ExternalLink,
+  Linkedin,
+  Twitter
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -27,6 +29,21 @@ const contactMethods = [
     description: "Available Mon-Fri 9AM-6PM",
     action: "tel:+917028872456",
     copyValue: "+917028872456"
+  }
+]
+
+const socialLinks = [
+  {
+    icon: Linkedin,
+    platform: "LinkedIn",
+    url: "https://www.linkedin.com/in/shourya-bhosale-3950a222a",
+    color: "text-blue-500"
+  },
+  {
+    icon: Twitter,
+    platform: "Twitter",
+    url: "https://x.com/shouryabhosale?s=21&t=COs9CjqQ2luJ3vECpx6Irw",
+    color: "text-sky-400"
   }
 ]
 
@@ -68,6 +85,20 @@ const contactCardVariants = {
     transition: {
       delay: i * 0.15,
       duration: 0.6,
+      ease: "easeOut"
+    }
+  })
+}
+
+const socialVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.8 },
+  visible: (i:any) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay: 0.8 + i * 0.1,
+      duration: 0.5,
       ease: "easeOut"
     }
   })
@@ -161,94 +192,136 @@ export default function Contact() {
                 </CardHeader>
 
                 <CardContent className="space-y-6">
-                  {/* Contact Methods */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {contactMethods.map((method, index) => {
-                      const Icon = method.icon
-                      const isCopied = copiedValue === method.copyValue
-                      
-                      return (
-                        <motion.div
-                          key={index}
-                          custom={index}
-                          variants={contactCardVariants}
-                          initial="hidden"
-                          whileInView="visible"
-                          viewport={{ once: true }}
-                          whileHover={{ scale: 1.02, y: -2 }}
-                          className="p-6 rounded-lg bg-slate-800/50 border border-slate-600/30 hover:border-blue-500/30 transition-all duration-300"
-                        >
-                          <div className="flex items-start gap-4">
-                            <motion.div
-                              whileHover={{ scale: 1.1 }}
-                              transition={{ duration: 0.2 }}
-                              className="p-3 rounded-lg bg-gradient-to-r from-blue-600 to-slate-600 shadow-lg"
-                            >
-                              <Icon className="w-5 h-5 text-white" />
-                            </motion.div>
-                            
-                            <div className="flex-1">
-                              <h3 className="text-white font-semibold mb-1">
-                                {method.title}
-                              </h3>
-                              <p className="text-blue-300 font-medium mb-2">
-                                {method.value}
-                              </p>
-                              <p className="text-slate-400 text-sm mb-4">
-                                {method.description}
-                              </p>
+                  {/* Contact Methods - Reduced width */}
+                  <div className="max-w-2xl mx-auto">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {contactMethods.map((method, index) => {
+                        const Icon = method.icon
+                        const isCopied = copiedValue === method.copyValue
+                        
+                        return (
+                          <motion.div
+                            key={index}
+                            custom={index}
+                            variants={contactCardVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            whileHover={{ scale: 1.02, y: -2 }}
+                            className="p-5 rounded-lg bg-slate-800/50 border border-slate-600/30 hover:border-blue-500/30 transition-all duration-300"
+                          >
+                            <div className="flex items-start gap-3">
+                              <motion.div
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ duration: 0.2 }}
+                                className="p-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-slate-600 shadow-lg"
+                              >
+                                <Icon className="w-4 h-4 text-white" />
+                              </motion.div>
                               
-                              {/* Action Buttons */}
-                              <div className="flex gap-2">
-                                <Button
-                                  asChild
-                                  size="sm"
-                                  className="bg-blue-600 hover:bg-blue-700 text-white"
-                                >
-                                  <a href={method.action}>
-                                    <ExternalLink className="w-4 h-4 mr-2" />
-                                    Contact
-                                  </a>
-                                </Button>
+                              <div className="flex-1 min-w-0">
+                                <h3 className="text-white font-semibold mb-1">
+                                  {method.title}
+                                </h3>
+                                <p className="text-blue-300 font-medium mb-2 text-sm truncate">
+                                  {method.value}
+                                </p>
+                                <p className="text-slate-400 text-xs mb-3">
+                                  {method.description}
+                                </p>
                                 
-                                <Button
-                                  size="sm"
-                                  variant="outline"
-                                  onClick={() => handleCopy(method.copyValue)}
-                                  className="border-slate-600 text-slate-300 hover:bg-slate-700"
-                                >
-                                  {isCopied ? (
-                                    <>
-                                      <motion.div
-                                        initial={{ scale: 0 }}
-                                        animate={{ scale: 1 }}
-                                        className="w-4 h-4 mr-2 text-green-400"
-                                      >
-                                        ✓
-                                      </motion.div>
-                                      Copied!
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Copy className="w-4 h-4 mr-2" />
-                                      Copy
-                                    </>
-                                  )}
-                                </Button>
+                                {/* Action Buttons */}
+                                <div className="flex gap-2">
+                                  <Button
+                                    asChild
+                                    size="sm"
+                                    className="bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-1 h-7"
+                                  >
+                                    <a href={method.action}>
+                                      <ExternalLink className="w-3 h-3 mr-1" />
+                                      Contact
+                                    </a>
+                                  </Button>
+                                  
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    onClick={() => handleCopy(method.copyValue)}
+                                    className="border-slate-600 text-slate-300 hover:bg-slate-700 text-xs px-3 py-1 h-7"
+                                  >
+                                    {isCopied ? (
+                                      <>
+                                        <motion.div
+                                          initial={{ scale: 0 }}
+                                          animate={{ scale: 1 }}
+                                          className="w-3 h-3 mr-1 text-green-400"
+                                        >
+                                          ✓
+                                        </motion.div>
+                                        Copied!
+                                      </>
+                                    ) : (
+                                      <>
+                                        <Copy className="w-3 h-3 mr-1" />
+                                        Copy
+                                      </>
+                                    )}
+                                  </Button>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </motion.div>
-                      )
-                    })}
+                          </motion.div>
+                        )
+                      })}
+                    </div>
                   </div>
+
+                  {/* Social Links */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.6 }}
+                    className="pt-4"
+                  >
+                    <div className="text-center mb-4">
+                      <p className="text-slate-300 text-sm font-medium mb-3">
+                        Follow me on social media
+                      </p>
+                      <div className="flex justify-center gap-4">
+                        {socialLinks.map((social, index) => {
+                          const Icon = social.icon
+                          
+                          return (
+                            <motion.a
+                              key={index}
+                              custom={index}
+                              variants={socialVariants}
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true }}
+                              href={social.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              whileHover={{ scale: 1.1, y: -2 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="group relative"
+                            >
+                              <div className="p-3 rounded-full bg-slate-800/50 border border-slate-600/30 hover:border-blue-500/50 transition-all duration-300 group-hover:bg-slate-700/50">
+                                <Icon className={`w-5 h-5 ${social.color} transition-colors duration-300`} />
+                              </div>
+                            </motion.a>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  </motion.div>
 
                   {/* Additional Info */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6, duration: 0.6 }}
-                    className="pt-6 border-t border-slate-700/50 text-center"
+                    className="pt-4 border-t border-slate-700/50 text-center"
                   >
                     <p className="text-slate-300 mb-2">
                       ✨ Open to exciting opportunities and collaborations

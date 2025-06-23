@@ -218,6 +218,7 @@ export default function Projects() {
                           className={`w-full py-3 px-6 bg-gradient-to-r ${proj.gradient} text-white font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 group/btn`}
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
+                          target="_blank"
                         >
                           <Zap className="w-4 h-4 group-hover/btn:animate-pulse" />
                           View Project
